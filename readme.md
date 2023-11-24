@@ -8,7 +8,7 @@
         3. pip install -U hydralit_components
     
     
-## Install data-science-function
+## Install data-science-function (Optional)
 
         1. git clone <repo> inside the root dir of streamlit app
         2. pip install -e .
