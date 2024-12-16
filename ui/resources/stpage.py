@@ -10,10 +10,25 @@ class Stpage():
     """Streamlit default page.
     """
 
-    def __init__(self, title, icon, layout="centered", initial_sidebar_state="collapsed",):
-        """
-            layout: wide, centered
-            initial_sidebar_state: expanded, collapsed
+    def __init__(
+        self,
+        title: str,
+        icon: str,
+        layout: str = "centered",
+        initial_sidebar_state: str = "collapsed",
+    ):
+        """Initalize the Streamlit app UI. 
+
+            Parameters
+            ----------
+            title : str
+                Plot title.
+            icon : str
+                Plot icon as a emoji string
+            layout : str
+                Layout type can take the values wide or centered
+            initial_sidebar_state : str 
+                Sidebar config can take the values expanded or collapsed
         """
 
         st.set_page_config(
@@ -35,13 +50,10 @@ class Stpage():
             </style>
         ''', unsafe_allow_html=True)
 
-        self.sidebar_menu = [
-            {"label": "Main", "icon": "💳", "id": "man", },
-        ]
-        self.op = "man"
+        self.page_group = "man"
 
     def load_data(self):
-        """
+        """Load application data and global states variables from data_interface.
         """
         ume_data = load_app_data()
         st.session_state["data"] = ume_data
@@ -51,18 +63,23 @@ class Stpage():
 
         gc.collect()
 
-    def show_navbar(self, page="mdl"):
+    def show_navbar(self, page_group: str = "man"):
+        """Show navbar menu for a specifc page
+
+            Parameters
+            ----------
+            page_group : str
+                Page group identification.
         """
-        """
-        self.menu_data = []
-        if page == "man":
-            self.menu_data = [
+        menu_data = []
+        if page_group == "man":
+            menu_data = [
                 {"label": "New Page", "icon": "📖", "id": "npg", },
             ]
 
         over_theme = {'txc_inactive': '#F0F8FF'}
         self.nav_bar = hc.nav_bar(
-            menu_definition=self.menu_data,
+            menu_definition=menu_data,
             override_theme=over_theme,
             home_name='Home',
             # login_name='Logout',
@@ -73,10 +90,13 @@ class Stpage():
         )
 
     def show_sidebar(self):
+        """Shows Streamlit app sidebar.
         """
-        """
+        sidebar_menu = [
+            {"label": "Main", "icon": "💳", "id": "man", },
+        ]
         with st.sidebar:
-            self.op = hc.option_bar(
+            self.page_group = hc.option_bar(
                 # title='Credit',
-                key='PrimaryOption', option_definition=self.sidebar_menu, horizontal_orientation=False
+                key='PrimaryOption', option_definition=sidebar_menu, horizontal_orientation=False
             )
