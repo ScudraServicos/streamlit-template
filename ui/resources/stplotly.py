@@ -20,18 +20,27 @@ def plot_data(
         ----------
         pplot : dict 
             Dictionary containing the data.
+            {
+                "x": df.index,
+                "bar-1": {
+                    "y": df["volume"], "name": "Customers train", "percent": False
+                },
+                "line-1": {
+                    "y": df["risco"], "name": "Train risk", "percent": True, "secondary": True
+                },
+            }
         title : str
             Plot title.
         ylabel : str
-            y label in the left side of the plot
+            y label in the left side of the plot.
         ylable2 : str
-            y label in the right side of the plot (secondary axis)
+            y label in the right side of the plot (secondary axis).
         barnorm : bool
-            Normalize the axis number or not
+            Normalize the axis number or not.
         barmode : str
-            Possible values stack, group, relative
+            Possible values stack, group, relative.
         y_max_limit : float
-            Max limit number in y axis
+            Max limit number in y axis.
         annotation : dict
             Show texts inside the plot.
             {

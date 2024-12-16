@@ -3,7 +3,7 @@ import streamlit as st
 
 
 class UserState():
-    """Keep global states that are available in Streamlit app
+    """Keep global states that are available in Streamlit app.
     """
 
     def __init__(self):

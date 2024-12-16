@@ -24,11 +24,11 @@ class Stpage():
             title : str
                 Plot title.
             icon : str
-                Plot icon as a emoji string
+                Plot icon as a emoji string.
             layout : str
-                Layout type can take the values wide or centered
+                Layout type can take the values wide or centered.
             initial_sidebar_state : str 
-                Sidebar config can take the values expanded or collapsed
+                Sidebar config can take the values expanded or collapsed.
         """
 
         st.set_page_config(
